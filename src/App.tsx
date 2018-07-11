@@ -1,6 +1,8 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
+import { ContentMenu, CurrentSelection, StyleMenu } from './components'
+
 interface IState {
   contentStyle: string
   visualStyle: string
@@ -101,27 +103,6 @@ const Sidebar = styled.aside`
   /* flex parent */
   display: flex;
   flex-direction: column;
-`
-
-const StyleMenu = styled.div`
-  background: hsla(0, 50%, 50%, 0.5);
-
-  /* flex child */
-  flex: 0 auto;
-`
-
-const ContentMenu = styled.div`
-  background: hsla(90, 50%, 50%, 0.5);
-
-  /* flex child */
-  flex: 0 auto;
-`
-
-const CurrentSelection = styled.div`
-  background: hsla(180, 50%, 50%, 0.5);
-
-  /* flex child */
-  flex: 1 auto;
 `
 
 const FinePrint = styled.div`
