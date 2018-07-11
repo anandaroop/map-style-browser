@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled from './styles/styled-components'
 
 import {
   ContentMenu,
@@ -67,8 +67,11 @@ class App extends React.Component<{}, IState> {
 const Layout = styled.div`
   /* fullscreen */
   position: absolute;
-  height: 100%;
-  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
 
   /* flex parent */
   display: flex;
@@ -112,6 +115,8 @@ const Content = styled.div`
 `
 
 const Sidebar = styled.aside`
+  overflow: auto;
+
   /* flex child */
   flex: 0 30%;
 
@@ -121,8 +126,7 @@ const Sidebar = styled.aside`
 `
 
 const FinePrint = styled.div`
-  background: hsla(270, 50%, 50%, 0.5);
-
+  margin: 1em;
   /* flex child */
   flex: 0 auto;
 `

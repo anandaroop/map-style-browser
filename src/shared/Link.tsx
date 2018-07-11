@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css } from '../styles/styled-components'
 
 import { ContentType } from '../components/ContentMenu'
 import { VisualType } from '../components/VisualMenu'
@@ -23,6 +23,7 @@ export const Link = ({ value, onClick, current }: IProps) => (
 
 const A = styled.a`
   display: block;
+  margin: 0.5em 0;
   padding: 0.5em;
   border-radius: 0.5em;
   cursor: pointer;

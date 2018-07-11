@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled from '../styles/styled-components'
 
 import { ContentType, VisualType } from '../components'
 
@@ -38,6 +38,7 @@ export const CurrentSelection = ({ contentStyle, visualStyle }: IProps) => (
 )
 
 const Div = styled.div`
+  margin: 1em;
   /* flex child */
   flex: 1 auto;
 `

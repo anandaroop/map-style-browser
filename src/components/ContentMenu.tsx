@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '../styles/styled-components'
 
-import { Link } from '../shared'
+import { H2, Link, Nav } from '../shared'
 
 export enum ContentType {
   /** Basic point and label features */
@@ -44,15 +44,8 @@ export const ContentMenu = (props: IProps) => (
 )
 
 const Div = styled.div`
+  margin: 1em;
   /* flex child */
   flex: 0 auto;
 `
 
-const H2 = styled.h2`
-  font-weight: 300;
-  color: #777;
-`
-
-const Nav = styled.nav`
-  list-style-type: none;
-`
