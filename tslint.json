@@ -1,7 +1,8 @@
 {
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
   "rules": {
-    "jsx-no-lambda": { "severity": "warning" }
+    "jsx-no-lambda": { "severity": "warning" },
+    "no-console": { "severity": "warning" }
   },
   "linterOptions": {
     "exclude": ["config/**/*.js", "node_modules/**/*.ts"]
