@@ -39,7 +39,10 @@ class App extends React.Component<{}, IState> {
               contentStyle={contentStyle}
               setContentStyle={this.setContentStyle}
             />
-            <CurrentSelection>The map preview shows</CurrentSelection>
+            <CurrentSelection
+              visualStyle={visualStyle}
+              contentStyle={contentStyle}
+            />
             <FinePrint>
               Styles shown here serve as a general guide only. Actual styles
               will be tailored to the style and content requirements of the
