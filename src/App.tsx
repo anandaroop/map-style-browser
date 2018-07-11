@@ -5,13 +5,14 @@ import {
   ContentMenu,
   ContentType,
   CurrentSelection,
-  IContentProps,
-  IVisualProps,
   VisualMenu,
   VisualType
 } from './components'
 
-interface IState extends IVisualProps, IContentProps {}
+interface IState {
+  contentStyle: ContentType
+  visualStyle: VisualType
+}
 
 class App extends React.Component<{}, IState> {
   public state = {
@@ -30,8 +31,14 @@ class App extends React.Component<{}, IState> {
         </Header>
         <Content>
           <Sidebar>
-            <VisualMenu visualStyle={visualStyle} />
-            <ContentMenu contentStyle={contentStyle} />
+            <VisualMenu
+              visualStyle={visualStyle}
+              setVisualStyle={this.setVisualStyle}
+            />
+            <ContentMenu
+              contentStyle={contentStyle}
+              setContentStyle={this.setContentStyle}
+            />
             <CurrentSelection>The map preview shows</CurrentSelection>
             <FinePrint>
               Styles shown here serve as a general guide only. Actual styles
@@ -43,6 +50,14 @@ class App extends React.Component<{}, IState> {
         </Content>
       </Layout>
     )
+  }
+
+  private setVisualStyle = (visualStyle: VisualType) => {
+    this.setState({ visualStyle })
+  }
+
+  private setContentStyle = (contentStyle: ContentType) => {
+    this.setState({ contentStyle })
   }
 }
 
