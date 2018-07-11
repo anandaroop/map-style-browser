@@ -85,8 +85,6 @@ const Download = styled.a`
 `
 
 const Content = styled.div`
-  background: gray;
-
   /* flex child */
   flex: 1 auto;
 
@@ -96,8 +94,6 @@ const Content = styled.div`
 `
 
 const Sidebar = styled.aside`
-  background: orange;
-
   /* flex child */
   flex: 0 30%;
 
