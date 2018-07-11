@@ -1,10 +1,15 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { ContentMenu, CurrentSelection, VisualMenu } from './components'
-
-import { ContentType, IContentProps  } from './components/ContentMenu'
-import { IVisualProps, VisualType } from './components/VisualMenu'
+import {
+  ContentMenu,
+  ContentType,
+  CurrentSelection,
+  IContentProps,
+  IVisualProps,
+  VisualMenu,
+  VisualType
+} from './components'
 
 interface IState extends IVisualProps, IContentProps {}
 
@@ -12,10 +17,6 @@ class App extends React.Component<{}, IState> {
   public state = {
     contentStyle: ContentType.simple,
     visualStyle: VisualType.natural
-  }
-
-  constructor(props: {}) {
-    super(props)
   }
 
   public render() {

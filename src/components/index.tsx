@@ -1,3 +1,5 @@
-export { ContentMenu } from './ContentMenu'
+export { ContentMenu, ContentType, IContentProps } from './ContentMenu'
+
 export { CurrentSelection } from './CurrentSelection'
-export { VisualMenu } from './VisualMenu'
+
+export { VisualMenu, VisualType, IVisualProps } from './VisualMenu'
