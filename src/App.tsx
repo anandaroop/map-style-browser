@@ -1,17 +1,17 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { ContentMenu, CurrentSelection, StyleMenu } from './components'
+import { ContentMenu, CurrentSelection, VisualMenu } from './components'
 
-interface IState {
-  contentStyle: string
-  visualStyle: string
-}
+import { ContentType, IContentProps  } from './components/ContentMenu'
+import { IVisualProps, VisualType } from './components/VisualMenu'
+
+interface IState extends IVisualProps, IContentProps {}
 
 class App extends React.Component<{}, IState> {
   public state = {
-    contentStyle: 'simple',
-    visualStyle: 'natural'
+    contentStyle: ContentType.simple,
+    visualStyle: VisualType.natural
   }
 
   constructor(props: {}) {
@@ -29,8 +29,8 @@ class App extends React.Component<{}, IState> {
         </Header>
         <Content>
           <Sidebar>
-            <StyleMenu>Choose a visual style ({visualStyle})</StyleMenu>
-            <ContentMenu>Choose a content style ({contentStyle})</ContentMenu>
+            <VisualMenu visualStyle={visualStyle} />
+            <ContentMenu contentStyle={contentStyle} />
             <CurrentSelection>The map preview shows</CurrentSelection>
             <FinePrint>
               Styles shown here serve as a general guide only. Actual styles
