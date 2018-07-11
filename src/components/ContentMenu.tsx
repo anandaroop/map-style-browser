@@ -1,9 +1,11 @@
 import * as React from 'react'
-import styled, { css } from '../styles/styled-components'
+import styled from '../styles/styled-components'
+
+import { Link } from '../shared'
 
 export enum ContentType {
   /** Basic point and label features */
-  simple = 'Simple locator',
+  locator = 'Simple locator',
 
   /** Areal features */
   entities = 'Historical entities',
@@ -22,9 +24,21 @@ export const ContentMenu = (props: IProps) => (
   <Div>
     <H2>Choose a content style</H2>
     <Nav>
-      <Link {...props} name={ContentType.simple} />
-      <Link {...props} name={ContentType.entities} />
-      <Link {...props} name={ContentType.phenomena} />
+      <Link
+        onClick={props.setContentStyle}
+        current={props.contentStyle}
+        value={ContentType.locator}
+      />
+      <Link
+        onClick={props.setContentStyle}
+        current={props.contentStyle}
+        value={ContentType.entities}
+      />
+      <Link
+        onClick={props.setContentStyle}
+        current={props.contentStyle}
+        value={ContentType.phenomena}
+      />
     </Nav>
   </Div>
 )
@@ -41,37 +55,4 @@ const H2 = styled.h2`
 
 const Nav = styled.nav`
   list-style-type: none;
-`
-
-const Link = ({
-  name,
-  setContentStyle,
-  contentStyle
-}: IProps & { name: ContentType }) => (
-  <A
-    active={contentStyle === name}
-    onClick={() => {
-      setContentStyle(name)
-    }}
-  >
-    {name}
-  </A>
-)
-
-const A = styled.a`
-  display: block;
-  padding: 0.5em;
-  border-radius: 0.5em;
-  cursor: pointer;
-
-  &:hover {
-    background: #ffc;
-  }
-
-  ${(p: { active?: boolean }) =>
-    p.active &&
-    css`
-      background: #eed;
-      font-weight: bold;
-    `};
 `

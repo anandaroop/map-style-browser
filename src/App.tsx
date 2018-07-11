@@ -16,7 +16,7 @@ interface IState {
 
 class App extends React.Component<{}, IState> {
   public state = {
-    contentStyle: ContentType.simple,
+    contentStyle: ContentType.locator,
     visualStyle: VisualType.natural
   }
 

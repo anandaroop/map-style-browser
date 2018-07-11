@@ -1,5 +1,7 @@
 import * as React from 'react'
-import styled, { css } from '../styles/styled-components'
+import styled from '../styles/styled-components'
+
+import { Link } from '../shared'
 
 export enum VisualType {
   /** Full-color land cover relief background */
@@ -22,9 +24,21 @@ export const VisualMenu = (props: IProps) => (
   <Div>
     <H2>Choose a visual style</H2>
     <Nav>
-      <Link {...props} name={VisualType.natural} />
-      <Link {...props} name={VisualType.relief} />
-      <Link {...props} name={VisualType.flat} />
+      <Link
+        onClick={props.setVisualStyle}
+        current={props.visualStyle}
+        value={VisualType.natural}
+      />
+      <Link
+        onClick={props.setVisualStyle}
+        current={props.visualStyle}
+        value={VisualType.relief}
+      />
+      <Link
+        onClick={props.setVisualStyle}
+        current={props.visualStyle}
+        value={VisualType.flat}
+      />
     </Nav>
   </Div>
 )
@@ -41,36 +55,4 @@ const H2 = styled.h2`
 
 const Nav = styled.nav`
   list-style-type: none;
-`
-
-const Link = ({
-  name,
-  setVisualStyle,
-  visualStyle
-}: IProps & { name: VisualType }) => (
-  <A
-    active={visualStyle === name}
-    onClick={() => {
-      setVisualStyle(name)
-    }}
-  >
-    {name}
-  </A>
-)
-const A = styled.a`
-  display: block;
-  padding: 0.5em;
-  border-radius: 0.5em;
-  cursor: pointer;
-
-  &:hover {
-    background: #ffc;
-  }
-
-  ${(p: { active?: boolean }) =>
-    p.active &&
-    css`
-      background: #eed;
-      font-weight: bold;
-    `};
 `
