@@ -1,8 +1,24 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-class App extends React.Component {
+interface IState {
+  contentStyle: string
+  visualStyle: string
+}
+
+class App extends React.Component<{}, IState> {
+  public state = {
+    contentStyle: 'simple',
+    visualStyle: 'natural'
+  }
+
+  constructor(props: {}) {
+    super(props)
+  }
+
   public render() {
+    const { visualStyle, contentStyle } = this.state
+
     return (
       <Layout>
         <Header>
@@ -11,8 +27,8 @@ class App extends React.Component {
         </Header>
         <Content>
           <Sidebar>
-            <StyleMenu>Choose a visual style</StyleMenu>
-            <ContentMenu>Choose a content style</ContentMenu>
+            <StyleMenu>Choose a visual style ({visualStyle})</StyleMenu>
+            <ContentMenu>Choose a content style ({contentStyle})</ContentMenu>
             <CurrentSelection>The map preview shows</CurrentSelection>
             <FinePrint>
               Styles shown here serve as a general guide only. Actual styles
