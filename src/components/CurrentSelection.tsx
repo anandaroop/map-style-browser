@@ -36,8 +36,8 @@ export const CurrentSelection = ({ contentStyle, visualStyle }: IProps) => (
 )
 
 const Div = styled.div`
-  margin-top: 1em;
-  padding-top: 1em;
+  margin: 1em 0;
+  padding: 1em 0;
   border-top: solid 1px #eee;
   font-size: 90%;
   /* flex child */
