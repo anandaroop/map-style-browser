@@ -5,6 +5,7 @@ import {
   ContentMenu,
   ContentType,
   CurrentSelection,
+  Main,
   VisualMenu,
   VisualType
 } from './components'
@@ -51,7 +52,7 @@ class App extends React.Component<{}, IState> {
               project under consideration.
             </Caveat>
           </Sidebar>
-          <Main />
+          <Main visualStyle={visualStyle} contentStyle={contentStyle} />
         </Content>
       </Layout>
     )
@@ -154,13 +155,6 @@ const Caveat = styled.div`
   margin: 1em;
   /* flex child */
   flex: 0 auto;
-`
-
-const Main = styled.main`
-  background: #eee;
-
-  /* flex child */
-  flex: 1 auto;
 `
 
 export default App
