@@ -3,10 +3,9 @@ import styled from '../styles/styled-components'
 
 import { H2, Link, Nav } from '../shared'
 
-import { ContentStyle, ContentStyleKey } from '../schema'
+import { ContentStyle, ContentStyleKey, contentStyles } from '../schema'
 
 export interface IProps {
-  /** The style of information overlaid on the basemap */
   contentStyle: ContentStyleKey
   setContentStyle: (contentStyle: ContentStyleKey) => void
 }
@@ -19,17 +18,23 @@ export const ContentMenu = (props: IProps) => (
         onClick={props.setContentStyle}
         current={props.contentStyle}
         value={ContentStyle.locator}
-      />
+      >
+        {contentStyles[ContentStyle.locator].displayName}
+      </Link>
       <Link
         onClick={props.setContentStyle}
         current={props.contentStyle}
         value={ContentStyle.entities}
-      />
+      >
+        {contentStyles[ContentStyle.entities].displayName}
+      </Link>
       <Link
         onClick={props.setContentStyle}
         current={props.contentStyle}
         value={ContentStyle.phenomena}
-      />
+      >
+        {contentStyles[ContentStyle.phenomena].displayName}
+      </Link>
     </Nav>
   </Div>
 )

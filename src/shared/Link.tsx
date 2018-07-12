@@ -9,22 +9,22 @@ interface IProps {
   onClick: (style: Key) => void
   value: Key
   current: Key
+  children?: string
 }
 
-export const Link = ({ value, onClick, current }: IProps) => (
+export const Link = ({ value, onClick, current, children }: IProps) => (
   <A
     active={current === value}
     onClick={() => {
       onClick(value)
     }}
   >
-    {value}
+    {children}
   </A>
 )
 
 const A = styled.a`
   display: block;
-  margin: 0.5em 0;
   padding: 0.5em;
   border-radius: 0.5em;
   cursor: pointer;
