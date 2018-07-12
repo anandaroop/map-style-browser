@@ -8,13 +8,23 @@ interface IProps {
   visualStyle: VisualStyleKey
 }
 
-const makeFilename = (props: IProps): string =>
-  `${props.visualStyle.toLowerCase()}-${props.contentStyle.toLowerCase()}`
+const makeFilename = (props: IProps): string => {
+  const visual = props.visualStyle.toLowerCase()
+  const content = props.contentStyle.toLowerCase()
+  return `${visual}-${content}.jpg`
+}
 
-export const Main = (props: IProps) => <Div>{makeFilename(props)}</Div>
+export const Main = (props: IProps) => <Div image={makeFilename(props)} />
 
+interface IDivProps {
+  image: string
+}
 const Div = styled.main`
   background: #eee;
+  background-image: url(${(p: IDivProps) => p.image});
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   /* flex child */
   flex: 1 auto;
