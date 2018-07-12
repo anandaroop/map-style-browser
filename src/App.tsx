@@ -45,11 +45,11 @@ class App extends React.Component<{}, IState> {
               visualStyle={visualStyle}
               contentStyle={contentStyle}
             />
-            <FinePrint>
+            <Caveat>
               Styles shown here serve as a general guide only. Actual styles
               will be tailored to the style and content requirements of the
               project under consideration.
-            </FinePrint>
+            </Caveat>
           </Sidebar>
           <Main>Map image!</Main>
         </Content>
@@ -147,7 +147,10 @@ const Sidebar = styled.aside`
   flex-direction: column;
 `
 
-const FinePrint = styled.div`
+const Caveat = styled.div`
+  color: #999;
+  font-size: 0.8em;
+  line-height: 150%;
   margin: 1em;
   /* flex child */
   flex: 0 auto;
