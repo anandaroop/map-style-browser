@@ -51,7 +51,7 @@ class App extends React.Component<{}, IState> {
               project under consideration.
             </Caveat>
           </Sidebar>
-          <Main>Map image!</Main>
+          <Main />
         </Content>
       </Layout>
     )
@@ -82,8 +82,6 @@ const Layout = styled.div`
 `
 
 const Header = styled.header`
-  background: yellow;
-
   /* appearance */
   border-bottom: solid 1px #ddd;
   padding: 1em 0;
@@ -100,6 +98,8 @@ const Header = styled.header`
 
 const Title = styled.h1`
   font-weight: 300;
+  background: white;
+  z-index: 1;
 `
 
 const Download = styled.a`
@@ -157,7 +157,7 @@ const Caveat = styled.div`
 `
 
 const Main = styled.main`
-  background: purple;
+  background: #eee;
 
   /* flex child */
   flex: 1 auto;
