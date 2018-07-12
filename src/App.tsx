@@ -27,7 +27,9 @@ class App extends React.Component<{}, IState> {
       <Layout>
         <Header>
           <Title>Map style browser</Title>
-          <Download>Download PDF version</Download>
+          <Download href="http://styles.anandarooproy.com/downloads/Map%20Style%20Book.pdf.zip">
+            Download PDF version
+          </Download>
         </Header>
         <Content>
           <Sidebar>
@@ -102,7 +104,27 @@ const Title = styled.h1`
 
 const Download = styled.a`
   position: absolute;
-  right: 0;
+  right: 10px;
+  padding-right: 30px;
+
+  background-image: url(http://wwwimages.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_24x24.png);
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  background-size: 20px;
+
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  /* responsive */
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
 `
 
 const Content = styled.div`
