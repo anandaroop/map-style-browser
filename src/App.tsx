@@ -1,24 +1,19 @@
 import * as React from 'react'
 import styled from './styles/styled-components'
 
-import {
-  ContentMenu,
-  ContentType,
-  CurrentSelection,
-  Main,
-  VisualMenu,
-  VisualType
-} from './components'
+import { ContentMenu, CurrentSelection, Main, VisualMenu } from './components'
+
+import { ContentStyleKey, VisualStyleKey } from './schema'
 
 interface IState {
-  contentStyle: ContentType
-  visualStyle: VisualType
+  contentStyle: ContentStyleKey
+  visualStyle: VisualStyleKey
 }
 
 class App extends React.Component<{}, IState> {
   public state = {
-    contentStyle: ContentType.locator,
-    visualStyle: VisualType.natural
+    contentStyle: 'locator' as ContentStyleKey,
+    visualStyle: 'natural' as VisualStyleKey
   }
 
   public render() {
@@ -58,11 +53,11 @@ class App extends React.Component<{}, IState> {
     )
   }
 
-  private setVisualStyle = (visualStyle: VisualType) => {
+  private setVisualStyle = (visualStyle: VisualStyleKey) => {
     this.setState({ visualStyle })
   }
 
-  private setContentStyle = (contentStyle: ContentType) => {
+  private setContentStyle = (contentStyle: ContentStyleKey) => {
     this.setState({ contentStyle })
   }
 }

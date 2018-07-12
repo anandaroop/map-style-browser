@@ -1,13 +1,14 @@
 import * as React from 'react'
 import styled, { css } from '../styles/styled-components'
 
-import { ContentType } from '../components/ContentMenu'
-import { VisualType } from '../components/VisualMenu'
+import { ContentStyleKey, VisualStyleKey } from '../schema'
+
+type Key = ContentStyleKey | VisualStyleKey
 
 interface IProps {
-  onClick: (style: ContentType | VisualType) => void
-  value: ContentType | VisualType
-  current: ContentType | VisualType
+  onClick: (style: Key) => void
+  value: Key
+  current: Key
 }
 
 export const Link = ({ value, onClick, current }: IProps) => (

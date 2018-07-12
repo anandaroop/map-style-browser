@@ -1,38 +1,36 @@
 import * as React from 'react'
 import styled from '../styles/styled-components'
 
-import { ContentType, VisualType } from '../components'
+import {
+  ContentStyleKey,
+  contentStyles,
+  VisualStyleKey,
+  visualStyles
+} from '../schema'
 
 interface IProps {
-  contentStyle: ContentType
-  visualStyle: VisualType
+  contentStyle: ContentStyleKey
+  visualStyle: VisualStyleKey
 }
 
-const mapName = ({ visualStyle, contentStyle }: IProps): string =>
-  ` ${visualStyle.toLowerCase()}-style ${contentStyle.toLowerCase()} map`
+const mapName = (
+  visualStyle: VisualStyleKey,
+  contentStyle: ContentStyleKey
+): string =>
+  `
+  ${visualStyles[visualStyle].displayName.toLowerCase()}-style
+  ${contentStyles[contentStyle].displayName.toLowerCase()} map
+  `
 
 export const CurrentSelection = ({ contentStyle, visualStyle }: IProps) => (
   <Div>
     <P>
       The map preview shows a
-      <strong>{mapName({ visualStyle, contentStyle })}</strong> which:
+      <strong>{mapName(visualStyle, contentStyle)}</strong> which:
     </P>
     <List>
-      <Item>
-        {visualStyle === VisualType.natural &&
-          `uses naturalistic colors to depict land cover and vegetation as well as terrain`}
-        {visualStyle === VisualType.relief &&
-          `uses shaded topographic relief to depict terrain`}
-        {visualStyle === VisualType.flat && `uses flat tints and line art only`}
-      </Item>
-      <Item>
-        {contentStyle === ContentType.locator &&
-          `locates simple point features such as towns, archaeological sites, etc`}
-        {contentStyle === ContentType.entities &&
-          `shows areal entities such as kingdoms, states, linguistic areas, etc`}
-        {contentStyle === ContentType.phenomena &&
-          `shows spatial phenomena such as trade or invasion routes, etc`}
-      </Item>
+      <Item>{visualStyles[visualStyle].description}</Item>
+      <Item>{contentStyles[contentStyle].description}</Item>
     </List>
   </Div>
 )

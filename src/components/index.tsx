@@ -1,7 +1,7 @@
-export { ContentMenu, ContentType } from './ContentMenu'
+export { ContentMenu } from './ContentMenu'
 
 export { CurrentSelection } from './CurrentSelection'
 
-export { VisualMenu, VisualType } from './VisualMenu'
+export { VisualMenu } from './VisualMenu'
 
 export { Main } from './Main'

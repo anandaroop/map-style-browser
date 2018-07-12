@@ -3,21 +3,12 @@ import styled from '../styles/styled-components'
 
 import { H2, Link, Nav } from '../shared'
 
-export enum VisualType {
-  /** Full-color land cover relief background */
-  natural = 'Natural',
-
-  /** Monochrome shaded relief background */
-  relief = 'Relief',
-
-  /** Flat tint background */
-  flat = 'Flat'
-}
+import { VisualStyle, VisualStyleKey } from '../schema'
 
 export interface IProps {
   /** The style of the basemap */
-  visualStyle: VisualType
-  setVisualStyle: (visualStyle: VisualType) => void
+  visualStyle: VisualStyleKey
+  setVisualStyle: (visualStyle: VisualStyleKey) => void
 }
 
 export const VisualMenu = (props: IProps) => (
@@ -27,17 +18,17 @@ export const VisualMenu = (props: IProps) => (
       <Link
         onClick={props.setVisualStyle}
         current={props.visualStyle}
-        value={VisualType.natural}
+        value={VisualStyle.natural}
       />
       <Link
         onClick={props.setVisualStyle}
         current={props.visualStyle}
-        value={VisualType.relief}
+        value={VisualStyle.relief}
       />
       <Link
         onClick={props.setVisualStyle}
         current={props.visualStyle}
-        value={VisualType.flat}
+        value={VisualStyle.flat}
       />
     </Nav>
   </Div>

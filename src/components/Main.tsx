@@ -1,18 +1,17 @@
 import * as React from 'react'
 import styled from '../styles/styled-components'
 
-import { ContentType, VisualType } from '.'
+import { ContentStyleKey, VisualStyleKey } from '../schema'
 
 interface IProps {
-  contentStyle: ContentType
-  visualStyle: VisualType
+  contentStyle: ContentStyleKey
+  visualStyle: VisualStyleKey
 }
-
 
 const makeFilename = (props: IProps): string =>
   `${props.visualStyle.toLowerCase()}-${props.contentStyle.toLowerCase()}`
 
-  export const Main = (props: IProps) => <Div>{makeFilename(props)}</Div>
+export const Main = (props: IProps) => <Div>{makeFilename(props)}</Div>
 
 const Div = styled.main`
   background: #eee;

@@ -3,21 +3,12 @@ import styled from '../styles/styled-components'
 
 import { H2, Link, Nav } from '../shared'
 
-export enum ContentType {
-  /** Basic point and label features */
-  locator = 'Simple locator',
-
-  /** Areal features */
-  entities = 'Historical entities',
-
-  /** Miscellaneous spatial features such as trade routes, invasions */
-  phenomena = 'Historical phenomena'
-}
+import { ContentStyle, ContentStyleKey } from '../schema'
 
 export interface IProps {
   /** The style of information overlaid on the basemap */
-  contentStyle: ContentType
-  setContentStyle: (contentStyle: ContentType) => void
+  contentStyle: ContentStyleKey
+  setContentStyle: (contentStyle: ContentStyleKey) => void
 }
 
 export const ContentMenu = (props: IProps) => (
@@ -27,17 +18,17 @@ export const ContentMenu = (props: IProps) => (
       <Link
         onClick={props.setContentStyle}
         current={props.contentStyle}
-        value={ContentType.locator}
+        value={ContentStyle.locator}
       />
       <Link
         onClick={props.setContentStyle}
         current={props.contentStyle}
-        value={ContentType.entities}
+        value={ContentStyle.entities}
       />
       <Link
         onClick={props.setContentStyle}
         current={props.contentStyle}
-        value={ContentType.phenomena}
+        value={ContentStyle.phenomena}
       />
     </Nav>
   </Div>
@@ -48,4 +39,3 @@ const Div = styled.div`
   /* flex child */
   flex: 0 auto;
 `
-
