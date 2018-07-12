@@ -35,7 +35,7 @@ export const VisualMenu = (props: IProps) => (
 )
 
 const Div = styled.div`
-  margin: 1em;
+  margin-top: 1em;
   /* flex child */
   flex: 0 auto;
 `

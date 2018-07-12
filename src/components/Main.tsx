@@ -19,7 +19,9 @@ export const Main = (props: IProps) => <Div image={makeFilename(props)} />
 interface IDivProps {
   image: string
 }
+
 const Div = styled.main`
+  margin-top: 1em;
   background: #eee;
   background-image: url(${(p: IDivProps) => p.image});
   background-position: 50% 50%;

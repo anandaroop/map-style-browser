@@ -70,6 +70,7 @@ const Layout = styled.div`
   right: 0;
   bottom: 0;
   overflow: hidden;
+  padding: 1em;
 
   /* flex parent */
   display: flex;
@@ -79,8 +80,8 @@ const Layout = styled.div`
 
 const Header = styled.header`
   /* appearance */
+  padding-bottom: 1em;
   border-bottom: solid 1px #ddd;
-  padding: 1em 0;
 
   /* flex child */
   flex: 0 auto;
@@ -134,6 +135,7 @@ const Content = styled.div`
 
 const Sidebar = styled.aside`
   overflow: auto;
+  margin-right: 1em;
 
   /* flex child */
   flex: 0 30%;
