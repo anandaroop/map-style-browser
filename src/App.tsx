@@ -2,18 +2,30 @@ import * as React from 'react'
 import styled from './styles/styled-components'
 
 import { ContentMenu, CurrentSelection, Main, VisualMenu } from './components'
+import {
+  ContentStyleKey,
+  VisualStyleKey,
+  ContentStyle,
+  VisualStyle
+} from './schema'
 
-import { ContentStyleKey, VisualStyleKey } from './schema'
+interface IProps {
+  contentStyle?: ContentStyleKey
+  visualStyle?: VisualStyleKey
+}
 
 interface IState {
   contentStyle: ContentStyleKey
   visualStyle: VisualStyleKey
 }
 
-class App extends React.Component<{}, IState> {
-  public state = {
-    contentStyle: 'locator' as ContentStyleKey,
-    visualStyle: 'natural' as VisualStyleKey
+class App extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props)
+    this.state = {
+      contentStyle: props.contentStyle || ContentStyle.locator,
+      visualStyle: props.visualStyle || VisualStyle.natural
+    }
   }
 
   public render() {
@@ -155,3 +167,5 @@ const Caveat = styled.div`
 `
 
 export default App
+
+// const Foo = ({ bar = 'bar' }: { bar?: string }) => <h1>Foo, {bar}</h1>
