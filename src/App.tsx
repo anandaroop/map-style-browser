@@ -9,6 +9,8 @@ import {
 
 import { Map } from './Map'
 import { CurrentSelection } from './CurrentSelection'
+import { VisualMenu } from './VisualMenu'
+import { ContentMenu } from './ContentMenu'
 
 class App extends React.Component {
   public render() {
@@ -33,8 +35,14 @@ class App extends React.Component {
                   </Header>
                   <Content>
                     <Sidebar>
-                      <StyleMenu>Choose a visual style</StyleMenu>
-                      <ContentMenu>Choose a content style</ContentMenu>
+                      <VisualMenu
+                        visualStyle={params.visual}
+                        contentStyle={params.content}
+                      />
+                      <ContentMenu
+                        visualStyle={params.visual}
+                        contentStyle={params.content}
+                      />
                       <CurrentSelection
                         visualStyle={params.visual}
                         contentStyle={params.content}
@@ -118,20 +126,6 @@ const Sidebar = styled.aside`
   /* flex parent */
   display: flex;
   flex-direction: column;
-`
-
-const StyleMenu = styled.div`
-  background: hsla(0, 50%, 50%, 0.5);
-
-  /* flex child */
-  flex: 0 auto;
-`
-
-const ContentMenu = styled.div`
-  background: hsla(90, 50%, 50%, 0.5);
-
-  /* flex child */
-  flex: 0 auto;
 `
 
 const FinePrint = styled.div`
