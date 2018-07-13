@@ -23,7 +23,7 @@ interface IDivProps {
 const Div = styled.main`
   margin-top: 1em;
   background: #eee;
-  background-image: url(${(p: IDivProps) => p.image});
+  background-image: url(/${(p: IDivProps) => p.image});
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;

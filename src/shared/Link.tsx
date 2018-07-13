@@ -1,42 +1,19 @@
-import * as React from 'react'
-import styled, { css } from '../styles/styled-components'
+import { NavLink } from 'react-router-dom'
+import styled from '../styles/styled-components'
 
-import { ContentStyleKey, VisualStyleKey } from '../schema'
-
-type Key = ContentStyleKey | VisualStyleKey
-
-interface IProps {
-  onClick: (style: Key) => void
-  value: Key
-  current: Key
-  children?: string
-}
-
-export const Link = ({ value, onClick, current, children }: IProps) => (
-  <A
-    active={current === value}
-    onClick={() => {
-      onClick(value)
-    }}
-  >
-    {children}
-  </A>
-)
-
-const A = styled.a`
+export const StyledRouterLink = styled(NavLink)`
   display: block;
   padding: 0.5em;
   border-radius: 0.5em;
-  cursor: pointer;
+  text-decoration: none;
+  color: black;
 
   &:hover {
     background: #ffc;
   }
 
-  ${(p: { active?: boolean }) =>
-    p.active &&
-    css`
-      background: #eed;
-      font-weight: bold;
-    `};
+  &.active {
+    background: #eed;
+    font-weight: bold;
+  }
 `
