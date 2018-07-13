@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 
 import { Map } from './Map'
+import { CurrentSelection } from './CurrentSelection'
 
 class App extends React.Component {
   public render() {
@@ -34,7 +35,10 @@ class App extends React.Component {
                     <Sidebar>
                       <StyleMenu>Choose a visual style</StyleMenu>
                       <ContentMenu>Choose a content style</ContentMenu>
-                      <CurrentSelection>The map preview shows</CurrentSelection>
+                      <CurrentSelection
+                        visualStyle={params.visual}
+                        contentStyle={params.content}
+                      />
                       <FinePrint>
                         Styles shown here serve as a general guide only. Actual
                         styles will be tailored to the style and content
@@ -128,13 +132,6 @@ const ContentMenu = styled.div`
 
   /* flex child */
   flex: 0 auto;
-`
-
-const CurrentSelection = styled.div`
-  background: hsla(180, 50%, 50%, 0.5);
-
-  /* flex child */
-  flex: 1 auto;
 `
 
 const FinePrint = styled.div`
