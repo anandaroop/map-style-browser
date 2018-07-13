@@ -1,28 +1,56 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch
+} from 'react-router-dom'
 
 class App extends React.Component {
   public render() {
     return (
-      <Layout>
-        <Header>
-          <Title>Map style browser</Title>
-          <Download>Download PDF version</Download>
-        </Header>
-        <Content>
-          <Sidebar>
-            <StyleMenu>Choose a visual style</StyleMenu>
-            <ContentMenu>Choose a content style</ContentMenu>
-            <CurrentSelection>The map preview shows</CurrentSelection>
-            <FinePrint>
-              Styles shown here serve as a general guide only. Actual styles
-              will be tailored to the style and content requirements of the
-              project under consideration.
-            </FinePrint>
-          </Sidebar>
-          <Main>Map image!</Main>
-        </Content>
-      </Layout>
+      <Router>
+        <Switch>
+          <Route path="/" exact={true}>
+            {() => <Redirect to="/natural/locator" />}
+          </Route>
+
+          <Route path="/:visual/:content">
+            {props => {
+              const {
+                match: {
+                  params: { visual, content }
+                }
+              } = props
+
+              return (
+                <Layout>
+                  <Header>
+                    <Title>Map style browser</Title>
+                    <Download>Download PDF version</Download>
+                  </Header>
+                  <Content>
+                    <Sidebar>
+                      <StyleMenu>Choose a visual style</StyleMenu>
+                      <ContentMenu>Choose a content style</ContentMenu>
+                      <CurrentSelection>The map preview shows</CurrentSelection>
+                      <FinePrint>
+                        Styles shown here serve as a general guide only. Actual
+                        styles will be tailored to the style and content
+                        requirements of the project under consideration.
+                      </FinePrint>
+                    </Sidebar>
+                    <Main>
+                      {visual}-{content} image!
+                    </Main>
+                  </Content>
+                </Layout>
+              )
+            }}
+          </Route>
+        </Switch>
+      </Router>
     )
   }
 }
