@@ -7,6 +7,8 @@ import {
   Switch
 } from 'react-router-dom'
 
+import { Map } from './Map'
+
 class App extends React.Component {
   public render() {
     return (
@@ -19,9 +21,7 @@ class App extends React.Component {
           <Route path="/:visual/:content">
             {props => {
               const {
-                match: {
-                  params: { visual, content }
-                }
+                match: { params }
               } = props
 
               return (
@@ -41,9 +41,10 @@ class App extends React.Component {
                         requirements of the project under consideration.
                       </FinePrint>
                     </Sidebar>
-                    <Main>
-                      {visual}-{content} image!
-                    </Main>
+                    <Map
+                      visualStyle={params.visual}
+                      contentStyle={params.content}
+                    />
                   </Content>
                 </Layout>
               )
@@ -141,13 +142,6 @@ const FinePrint = styled.div`
 
   /* flex child */
   flex: 0 auto;
-`
-
-const Main = styled.main`
-  background: purple;
-
-  /* flex child */
-  flex: 1 auto;
 `
 
 export default App
