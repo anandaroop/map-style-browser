@@ -43,9 +43,11 @@ class App extends React.Component<IProps, IState> {
           <Sidebar>
             <VisualMenu
               visualStyle={visualStyle}
+              contentStyle={contentStyle}
               setVisualStyle={this.setVisualStyle}
             />
             <ContentMenu
+              visualStyle={visualStyle}
               contentStyle={contentStyle}
               setContentStyle={this.setContentStyle}
             />

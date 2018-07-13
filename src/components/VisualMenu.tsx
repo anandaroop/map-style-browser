@@ -1,43 +1,42 @@
 import * as React from 'react'
 import styled from '../styles/styled-components'
+import { LinkProps } from 'react-router-dom'
 
-import { H2, Link, Nav } from '../shared'
+import { H2, StyledRouterLink as Link } from '../shared'
 
-import { VisualStyle, VisualStyleKey, visualStyles } from '../schema'
+import {
+  ContentStyleKey,
+  VisualStyle,
+  VisualStyleKey,
+  visualStyles
+} from '../schema'
 
 export interface IProps {
+  contentStyle: ContentStyleKey
   visualStyle: VisualStyleKey
   setVisualStyle: (visualStyle: VisualStyleKey) => void
 }
 
+const makeLink = (props: IProps) => (
+  visualStyle: VisualStyle
+): React.ReactElement<LinkProps> => (
+  <Link
+    to={`/${visualStyle}/${props.contentStyle}`}
+    onClick={e => props.setVisualStyle(visualStyle)}
+  >
+    {visualStyles[visualStyle].displayName}
+  </Link>
+)
+
 export const VisualMenu = (props: IProps) => (
   <Div>
     <H2>Choose a visual style</H2>
-    <Nav>
-      <Link
-        onClick={props.setVisualStyle}
-        current={props.visualStyle}
-        value={VisualStyle.natural}
-      >
-        {visualStyles[VisualStyle.natural].displayName}
-      </Link>
 
-      <Link
-        onClick={props.setVisualStyle}
-        current={props.visualStyle}
-        value={VisualStyle.relief}
-      >
-        {visualStyles[VisualStyle.relief].displayName}
-      </Link>
-
-      <Link
-        onClick={props.setVisualStyle}
-        current={props.visualStyle}
-        value={VisualStyle.flat}
-      >
-        {visualStyles[VisualStyle.flat].displayName}
-      </Link>
-    </Nav>
+    <nav>
+      {makeLink(props)(VisualStyle.natural)}
+      {makeLink(props)(VisualStyle.flat)}
+      {makeLink(props)(VisualStyle.relief)}
+    </nav>
   </Div>
 )
 
