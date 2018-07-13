@@ -8,14 +8,20 @@ interface IProps {
   contentStyle: ContentStyle
 }
 
-export const Map = ({ visualStyle, contentStyle }: IProps) => (
-  <Main>
-    {visualStyle}-{contentStyle}.jpg
-  </Main>
-)
+export const Map = (props: IProps) => <Main image={makeImagePath(props)} />
+
+const makeImagePath = ({ visualStyle, contentStyle }: IProps) =>
+  `/${visualStyle}-${contentStyle}.jpg`
+
+interface IMainProps {
+  image: string
+}
 
 const Main = styled.main`
-  background: pink;
+  background-image: url(${(p: IMainProps) => p.image});
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   /* flex child */
   flex: 1 auto;
