@@ -11,7 +11,7 @@ interface IProps {
 export const Map = (props: IProps) => <Main image={makeImagePath(props)} />
 
 const makeImagePath = ({ visualStyle, contentStyle }: IProps) =>
-  `/${visualStyle}-${contentStyle}.jpg`
+  `/images/${visualStyle}-${contentStyle}.jpg`
 
 interface IMainProps {
   image: string
