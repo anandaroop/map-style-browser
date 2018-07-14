@@ -1,0 +1,4 @@
+#! /bin/sh
+
+rsync -av --delete --exclude=.DS_Store \
+./build/ $DEPLOY_USER@$DEPLOY_HOST:~/www/styles/html
