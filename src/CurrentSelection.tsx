@@ -38,14 +38,17 @@ const mapNameFor = (
   `
 
 const Div = styled.div`
-  background: hsla(180, 50%, 50%, 0.5);
+  padding-top: ${p => p.theme.spacing.double};
+  margin-bottom: ${p => p.theme.spacing.single};
+  border-top: solid 1px #eee;
+  font-size: 90%;
 
   /* flex child */
   flex: 1 auto;
 `
 
-const P = styled.p`
-`
+const P = styled.p``
+
 const List = styled.ul`
   padding-left: 1em;
 `

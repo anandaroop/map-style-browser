@@ -16,7 +16,7 @@ interface IProps {
 
 export const VisualMenu = ({ visualStyle, contentStyle }: IProps) => (
   <Div>
-    <h2>Choose a visual style</h2>
+    <H2>Choose a visual style</H2>
     <nav>
       <StyledRouterNavLink to={`/${VisualStyle.natural}/${contentStyle}`}>
         {VISUAL_STYLES[VisualStyle.natural].displayName}
@@ -34,8 +34,14 @@ export const VisualMenu = ({ visualStyle, contentStyle }: IProps) => (
 )
 
 const Div = styled.div`
-  background: hsla(0, 50%, 50%, 0.5);
+  margin-bottom: ${p => p.theme.spacing.single};
 
   /* flex child */
   flex: 0 auto;
+`
+
+const H2 = styled.h2`
+  color: #777;
+  font-weight: ${p => p.theme.font.weight.normal};
+  margin-bottom: ${p => p.theme.spacing.single};
 `

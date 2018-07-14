@@ -1,5 +1,6 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+import { theme } from './styles/theme'
 import {
   BrowserRouter as Router,
   Redirect,
@@ -16,63 +17,73 @@ class App extends React.Component {
   public render() {
     return (
       <Router>
-        <Switch>
-          <Route path="/" exact={true}>
-            {() => <Redirect to="/natural/locator" />}
-          </Route>
+        <ThemeProvider theme={theme}>
+          <Switch>
+            <Route path="/" exact={true}>
+              {() => <Redirect to="/natural/locator" />}
+            </Route>
 
-          <Route path="/:visual/:content">
-            {props => {
-              const {
-                match: { params }
-              } = props
+            <Route path="/:visual/:content">
+              {props => {
+                const {
+                  match: { params }
+                } = props
 
-              return (
-                <Layout>
-                  <Header>
-                    <Title>Map style browser</Title>
-                    <Download>Download PDF version</Download>
-                  </Header>
-                  <Content>
-                    <Sidebar>
-                      <VisualMenu
+                return (
+                  <Layout>
+                    <Header>
+                      <Title>Map style browser</Title>
+                      <Download href="/downloads/Map%20Style%20Book.pdf.zip">
+                        Download PDF version
+                      </Download>
+                    </Header>
+                    <Content>
+                      <Sidebar>
+                        <VisualMenu
+                          visualStyle={params.visual}
+                          contentStyle={params.content}
+                        />
+                        <ContentMenu
+                          visualStyle={params.visual}
+                          contentStyle={params.content}
+                        />
+                        <CurrentSelection
+                          visualStyle={params.visual}
+                          contentStyle={params.content}
+                        />
+                        <FinePrint>
+                          Styles shown here serve as a general guide only.
+                          Actual styles will be tailored to the style and
+                          content requirements of the project under
+                          consideration.
+                        </FinePrint>
+                      </Sidebar>
+                      <Map
                         visualStyle={params.visual}
                         contentStyle={params.content}
                       />
-                      <ContentMenu
-                        visualStyle={params.visual}
-                        contentStyle={params.content}
-                      />
-                      <CurrentSelection
-                        visualStyle={params.visual}
-                        contentStyle={params.content}
-                      />
-                      <FinePrint>
-                        Styles shown here serve as a general guide only. Actual
-                        styles will be tailored to the style and content
-                        requirements of the project under consideration.
-                      </FinePrint>
-                    </Sidebar>
-                    <Map
-                      visualStyle={params.visual}
-                      contentStyle={params.content}
-                    />
-                  </Content>
-                </Layout>
-              )
-            }}
-          </Route>
-        </Switch>
+                    </Content>
+                  </Layout>
+                )
+              }}
+            </Route>
+          </Switch>
+        </ThemeProvider>
       </Router>
     )
   }
 }
 
 const Layout = styled.div`
+  /* typography */
+  font-family: ${p => p.theme.font.family};
+  font-weight: ${p => p.theme.font.weight.normal};
+
   /* fullscreen */
   position: absolute;
   height: 100%;
   width: 100%;
+  /* margin: ${p => p.theme.spacing.single}; */
 
   /* flex parent */
   display: flex;
@@ -81,11 +92,9 @@ const Layout = styled.div`
 `
 
 const Header = styled.header`
-  background: yellow;
-
   /* appearance */
   border-bottom: solid 1px #ddd;
-  padding: 1em 0;
+  padding: ${p => p.theme.spacing.single} 0;
 
   /* flex child */
   flex: 0 auto;
@@ -103,12 +112,15 @@ const Title = styled.h1`
 
 const Download = styled.a`
   position: absolute;
-  right: 0;
+  right: ${p => p.theme.spacing.single};
+  padding-right: 25px;
+  background-image: url(http://wwwimages.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_24x24.png);
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-size: 20px;
 `
 
 const Content = styled.div`
-  background: gray;
-
   /* flex child */
   flex: 1 auto;
 
@@ -118,7 +130,7 @@ const Content = styled.div`
 `
 
 const Sidebar = styled.aside`
-  background: orange;
+  padding: ${p => p.theme.spacing.single};
 
   /* flex child */
   flex: 0 30%;
@@ -129,7 +141,9 @@ const Sidebar = styled.aside`
 `
 
 const FinePrint = styled.div`
-  background: hsla(270, 50%, 50%, 0.5);
+  color: #999;
+  font-size: 0.8em;
+  /* line-height: 150%; */
 
   /* flex child */
   flex: 0 auto;

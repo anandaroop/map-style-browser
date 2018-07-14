@@ -11,7 +11,7 @@ interface IProps {
 
 export const ContentMenu = ({ visualStyle, contentStyle }: IProps) => (
   <Div>
-    <h2>Choose a content style</h2>
+    <H2>Choose a content style</H2>
     <nav>
       <StyledRouterNavLink to={`/${visualStyle}/${ContentStyle.locator}`}>
         {CONTENT_STYLES[ContentStyle.locator].displayName}
@@ -29,8 +29,16 @@ export const ContentMenu = ({ visualStyle, contentStyle }: IProps) => (
 )
 
 const Div = styled.div`
-  background: hsla(90, 50%, 50%, 0.5);
+  padding-top: ${p => p.theme.spacing.single};
+  margin-bottom: ${p => p.theme.spacing.single};
+  border-top: solid 1px #eee;
 
   /* flex child */
   flex: 0 auto;
+`
+
+const H2 = styled.h2`
+  color: #777;
+  font-weight: ${p => p.theme.font.weight.normal};
+  margin-bottom: ${p => p.theme.spacing.single};
 `
